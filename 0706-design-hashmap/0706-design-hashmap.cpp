@@ -20,9 +20,12 @@ public:
         return it;
     }
     void put(int key, int value) {
-        remove(key);
+        auto itr=search(key);
         int i=hash(key);
-        m[i].push_back({key,value});
+        if(itr == m[i].end())
+            m[i].push_back({key,value});
+        else
+            itr->second=value;
     }
     int get(int key) {
         int i=hash(key);
