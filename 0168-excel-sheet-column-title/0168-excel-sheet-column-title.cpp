@@ -9,7 +9,7 @@ public:
         string c = "";
         while (n > 0){
             if(n%26 == 0){
-                c+='A'+25;
+                c+='Z';
                 n-=1;
             }else{
                 c+=(n%26+'A'-1);
