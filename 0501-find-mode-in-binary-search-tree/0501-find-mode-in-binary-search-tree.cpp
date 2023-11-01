@@ -11,22 +11,17 @@
  */
 class Solution {
 public:
-    vector<int> nums;
+    vector<int> res;
+    int maxStreak=0;
+    int currStreak=0;
+    int currNum=0;
     void inorder(TreeNode* root){
         if(root == nullptr)
             return;
         inorder(root->left);
-        nums.push_back(root->val);
-        inorder(root->right);
-    }
-    vector<int> findMode(TreeNode* root) {
-        vector<int> res;
-        inorder(root);
-        int maxStreak=0;
-        int currStreak=0;
-        int currNum=0;
-        for(auto x:nums){
-            if(x == currNum)
+        
+        int x=root->val;
+        if(x == currNum)
                 currStreak++;
             else{
                 currStreak=1;
@@ -38,7 +33,11 @@ public:
             }
             if(currStreak == maxStreak)
                 res.push_back(x);
-        }
+        
+        inorder(root->right);
+    }
+    vector<int> findMode(TreeNode* root) {
+        inorder(root);
         return res;
     }
 };
