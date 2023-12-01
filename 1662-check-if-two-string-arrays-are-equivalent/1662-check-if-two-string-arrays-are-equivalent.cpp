@@ -1,11 +1,22 @@
 class Solution {
 public:
     bool arrayStringsAreEqual(vector<string>& w1, vector<string>& w2) {
-        string str1="",str2="";
-        for(int i=0;i<w1.size();i++)
-            str1+=w1[i];
-        for(int i=0;i<w2.size();i++)
-            str2+=w2[i];
-        return (str1==str2);
+        int i=0,j=0;
+        int x=0,y=0;
+        while(i<w1.size() && j<w2.size()){
+            if(w1[i][x] != w2[j][y])
+                return false;
+            x++;
+            y++;
+            if(x == w1[i].size()){
+                i++;
+                x=0;
+            }
+            if(y == w2[j].size()){
+                j++;
+                y=0;
+            }
+        }
+        return (i==w1.size() && j==w2.size());
     }
 };
