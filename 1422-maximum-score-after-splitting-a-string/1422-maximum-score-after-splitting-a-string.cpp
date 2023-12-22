@@ -2,19 +2,20 @@ class Solution {
 public:
     int maxScore(string s) {
         int n=s.length();
+        
         int ones=0;
-        for(int i=0;i<n;i++)
-            if(s[i] == '1')
-                ones++;
         int zeros=0;
-        int res=0;
+        int best=INT_MIN;
+        
         for(int i=0;i<n-1;i++){
             if(s[i] == '1')
-                ones--;
+                ones++;
             else
                 zeros++;
-        res=max(res,zeros+ones);
+        best=max(best,zeros-ones);
         }
-        return res;
+        if(s[n-1] == '1')
+            ones++;
+        return best+ones;
     }
 };
