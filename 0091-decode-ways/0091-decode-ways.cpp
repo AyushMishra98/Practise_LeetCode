@@ -14,10 +14,11 @@ public:
             return 1;
         if(dp[idx] == -1){
             dp[idx]=0;
-            if(s[idx] != '0')
-            dp[idx]+=countPatterns(s,idx+1);
-            if(s[idx] != '0' && check(s,idx))
-            dp[idx]+=countPatterns(s,idx+2);
+            if(s[idx] != '0'){
+                dp[idx]+=countPatterns(s,idx+1);
+                if(check(s,idx))
+                dp[idx]+=countPatterns(s,idx+2);
+            }
         }
         return dp[idx];
     }
