@@ -1,5 +1,7 @@
 class Solution {
 public:
+    //T.C=A.S=O(m*n)
+    //multi source BFS
     int numEnclaves(vector<vector<int>>& grid) {
         int m=grid.size() ,n=grid[0].size();
         vector<vector<bool>> vis(m,vector<bool>(n,false));
