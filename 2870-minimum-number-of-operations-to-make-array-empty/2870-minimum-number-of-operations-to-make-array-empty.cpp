@@ -4,16 +4,20 @@ public:
         unordered_map<int,int> m;
         for(auto x:nums)
             m[x]++;
-        int res=0;
+        int count=0;
         for(auto x:m){
-            if(x.second == 1)
+            int temp=x.second;
+            if(temp == 1)
                 return -1;
-            int val=x.second/3;
-            int rem=x.second%3;
-            if(rem >0)
-                val++;
-            res+=val;
+            
+            count+=temp/3;
+            temp=temp%3;
+            count+=temp/2;
+            temp=temp%2;
+            
+            if(temp == 1)
+                count++;
         }
-        return res;
+        return count;
     }
 };
