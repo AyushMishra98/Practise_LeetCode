@@ -12,10 +12,8 @@ public:
             
             count+=temp/3;
             temp=temp%3;
-            count+=temp/2;
-            temp=temp%2;
             
-            if(temp == 1)
+            if(temp >0 )
                 count++;
         }
         return count;
