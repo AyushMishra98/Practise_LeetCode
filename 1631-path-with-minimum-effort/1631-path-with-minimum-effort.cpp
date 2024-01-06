@@ -21,11 +21,11 @@ public:
                 int j=r.second.second+y[k];
                 
                 if(i>=0 && i<m && j>=0 && j<n){
-                    int temp=abs(h[i][j]-h[r.second.first][r.second.second]);
-                    int maxdiff=max(temp,diff[r.second.first][r.second.second]);
+                    int newdiff=abs(h[i][j]-h[r.second.first][r.second.second]);
+                    int maxdiff=max(newdiff,diff[r.second.first][r.second.second]);
                     if(diff[i][j] > maxdiff){
                         diff[i][j]=maxdiff;
-                        pq.push({temp,{i,j}});
+                        pq.push({maxdiff,{i,j}});
                     }
                 }
             }
