@@ -4,6 +4,7 @@ public:
         if(n == 1)
             return 1;
         
+        //Bottom-up Approach
         vector<int> dp(n+1);
         dp[1]=1;
         dp[2]=2;
