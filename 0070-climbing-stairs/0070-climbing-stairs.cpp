@@ -4,14 +4,16 @@ public:
         if(n == 1)
             return 1;
         
-        //Bottom-up Approach
-        vector<int> dp(n+1);
-        dp[1]=1;
-        dp[2]=2;
-        for(int i=3;i<=n;i++)
-            dp[i]=dp[i-1]+dp[i-2];
+        //Constant space
+        int prev2=1;
+        int prev =2;
+        for(int i=3;i<=n;i++){
+            int curr=prev+prev2;
+            prev2=prev;
+            prev=curr;
+        }
         
-        return dp[n];
+        return prev;
        
     }
 };
