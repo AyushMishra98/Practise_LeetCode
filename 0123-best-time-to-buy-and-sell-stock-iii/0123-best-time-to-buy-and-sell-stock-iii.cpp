@@ -6,10 +6,7 @@ public:
         
         for(int idx=n-1;idx>=0;idx--){
             for(int flag=0;flag<2;flag++){
-                for(int cap=2;cap>=0;cap--){
-                    
-                    if(cap == 0)
-                        continue;
+                for(int cap=1;cap<3;cap++){
                     int profit=0;
                     if(flag){ 
                         int take=-p[idx]+after[0][cap];//buying
