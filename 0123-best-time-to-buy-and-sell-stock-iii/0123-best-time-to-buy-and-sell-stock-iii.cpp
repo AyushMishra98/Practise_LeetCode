@@ -23,8 +23,8 @@ public:
                         }
                     curr[flag][cap]=profit;
                 }
-                after=curr;
             }
+            after=curr;
         }
         return after[1][2];
     }
