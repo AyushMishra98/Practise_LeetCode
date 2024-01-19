@@ -2,29 +2,30 @@ class Solution {
 public:
     int maxProfit(vector<int>& p) {
         int n=p.size();
-        int dp[n+1][2][3];
-        memset(dp,0,sizeof dp);
+        vector<vector<int>> after(2,vector<int> (3,0)),curr(2,vector<int> (3,0));
         
         for(int idx=n-1;idx>=0;idx--){
             for(int flag=0;flag<2;flag++){
                 for(int cap=2;cap>=0;cap--){
+                    
                     if(cap == 0)
                         continue;
-            int profit=0;
-            if(flag){ 
-                int take=-p[idx]+dp[idx+1][0][cap];//buying
-                int notTake=dp[idx+1][1][cap];
-                profit=max(take,notTake);
+                    int profit=0;
+                    if(flag){ 
+                        int take=-p[idx]+after[0][cap];//buying
+                        int notTake=after[1][cap];
+                        profit=max(take,notTake);
+                        }
+                    else{   
+                        int take=p[idx]+after[1][cap-1];//selling 
+                        int notTake=after[0][cap];
+                        profit=max(take,notTake);
+                        }
+                    curr[flag][cap]=profit;
                 }
-            else{   
-                int take=p[idx]+dp[idx+1][1][cap-1];//selling 
-                int notTake=dp[idx+1][0][cap];
-                profit=max(take,notTake);
-                }
-                    dp[idx][flag][cap]=profit;
-                }
+                after=curr;
             }
         }
-        return dp[0][1][2];
+        return after[1][2];
     }
 };
