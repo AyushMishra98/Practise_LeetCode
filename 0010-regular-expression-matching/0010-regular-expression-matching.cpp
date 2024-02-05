@@ -6,6 +6,7 @@ public:
         
         if(j >= p.size())
             return false;
+        
         if(dp[i][j] == -1){
              
             bool flag=i<s.size() &&(s[i] == p[j] || p[j] == '.');
