@@ -13,7 +13,7 @@ public:
             char curr = s[right];
         
             m[curr]--;
-            if(m.find(curr) != m.end() && m[curr] >= 0)
+            if(m[curr] >= 0)
                 remain--;
         
         while(remain == 0) {
@@ -25,7 +25,7 @@ public:
             curr = s[left];
             
             m[curr]++;
-            if(m.find(curr) != m.end() && m[curr] > 0)
+            if(m[curr] > 0)
                remain++;
             
             left++;
