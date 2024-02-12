@@ -1,13 +1,13 @@
 class Solution {
 public:
     bool isPalindrome(int x) {
-        long long int  sum=0,n=x;
-        while(x>0){
-            sum=sum*10+x%10;
-            x=x/10;
+        long int temp=0;
+        int n=x;
+        
+        while(n>0){
+            temp=temp*10+n%10;
+            n=n/10;
         }
-        if(sum==n)
-        return true;
-        return false;
+        return (temp == x);
     }
 };
