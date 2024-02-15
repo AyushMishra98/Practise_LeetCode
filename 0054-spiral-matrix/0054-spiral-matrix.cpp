@@ -1,25 +1,28 @@
+#define pb push_back
 class Solution {
 public:
-    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+    vector<int> spiralOrder(vector<vector<int>>& mat) {
         vector<int> res;
-        int R=matrix.size(),C=matrix[0].size();
-        int top=0,left=0,bottom=R-1,right=C-1;
-        while(top<=bottom && left<=right){
-            for(int i=left;i<=right;i++)
-                res.push_back(matrix[top][i]);
-            top++;
-            for(int i=top;i<=bottom;i++)
-                res.push_back(matrix[i][right]);
-            right--;
-            if(top<=bottom){
-                for(int i=right;i>=left;i--)
-                    res.push_back(matrix[bottom][i]);
-                bottom--;
+        int t=0,b=mat.size()-1;
+        int l=0,r=mat[0].size()-1;
+        while(t<=b && l<=r){
+            for(int j=l;j<=r;j++)
+                res.pb(mat[t][j]);
+            t++;
+            for(int i=t;i<=b;i++)
+                res.pb(mat[i][r]);
+            r--;
+            
+            if(t<=b){
+                for(int j=r;j>=l;j--)
+                res.pb(mat[b][j]);
+            b--;
             }
-            if(left<=right){
-                for(int i=bottom;i>=top;i--)
-                    res.push_back(matrix[i][left]);
-                left++;
+            
+            if(l<=r){
+                for(int i=b;i>=t;i--)
+                res.pb(mat[i][l]);
+            l++;
             }
         }
         return res;
