@@ -5,8 +5,9 @@ public:
         int maxi=0;
         int low=0;
         long sum=0;
+        int high=0;
         
-        for(int high=0;high<nums.size();high++){
+        while(high<nums.size()){
             long lar=nums[high];
             sum+=lar;
             
@@ -15,6 +16,7 @@ public:
                 low++;
             }
             maxi=max(maxi,high-low+1);
+            high++;
         }
         return maxi;
     }
