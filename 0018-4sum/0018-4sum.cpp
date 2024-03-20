@@ -1,27 +1,54 @@
 class Solution {
 public:
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
-        set<vector<int>> store;
+        vector<vector<int>> res;
+        sort(nums.begin(),nums.end());
+        int n=nums.size();
         
-        int  n=nums.size();
-        for(int i=0;i<n;i++){
-            for(int j=i+1;j<n;j++){
-                unordered_set<long long> s;
-                for(int k=j+1;k<n;k++){
+        int i=0;
+        while(i<n){
+            int j=i+1;
+            while(j<n){
+                int low=j+1,high=n-1;
+                
+                while(low<high){
                     long long sum=nums[i]+nums[j];
-                    sum+=nums[k];
+                    sum+=nums[low]+nums[high];
                     
-                    long long element=target-sum;
-                    if(s.find(element) != s.end()){
-                        vector<int> temp={nums[i],nums[j],nums[k],(int)element};
-                        sort(temp.begin(),temp.end());
-                        store.insert(temp);
+                    if(sum == target){
+                        res.push_back({nums[i],nums[j],nums[low],nums[high]});
+                        
+                        int element1=nums[low];
+                        low++;
+                        while(low<n && nums[low] == element1){
+                            low++;
+                        }
+                        
+                        int element2=nums[high];
+                        high--;
+                        while(high>j && nums[high] == element2){
+                            high--;
+                        }
                     }
-                    s.insert(nums[k]);
+                    else if(sum<target)
+                        low++;
+                    else
+                        high--;
+                }
+                
+                int element3=nums[j];
+                j++;
+                while(j<n && nums[j] == element3){
+                    j++;
                 }
             }
+            
+            int element4=nums[i];
+            i++;
+            while(i<n && nums[i] == element4){
+                i++;
+            }
         }
-        vector<vector<int>> res(store.begin(),store.end());
         return res;
     }
 };
