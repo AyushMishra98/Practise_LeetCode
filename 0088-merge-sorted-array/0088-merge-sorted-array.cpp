@@ -1,18 +1,21 @@
 class Solution {
 public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-        int i=0,j=0;
-        vector<int> res;
-        while(i<m && j<n){
-            if(nums1[i]<nums2[j])
-                res.push_back(nums1[i++]);
-            else
-                res.push_back(nums2[j++]);
+        //optimal solution
+        int left=m-1,right=0;
+        while(left>=0 && right<n){
+            if(nums1[left] > nums2[right]){
+                swap(nums1[left],nums2[right]);
+                cout<<nums1[left]<<" "<<nums2[right]<<endl;
+                left--,right++;
+            }
+            else{
+                break;
+            }
         }
-        while(i<m)
-            res.push_back(nums1[i++]);
-        while(j<n)
-            res.push_back(nums2[j++]);
-        nums1=res;
+        sort(nums1.begin(),nums1.begin()+m);
+        sort(nums2.begin(),nums2.end());
+        for(int i=0;i<n;i++)
+            nums1[i+m]=nums2[i];
     }
 };
